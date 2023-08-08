@@ -55,7 +55,7 @@ begin
  
 rst <= '1';
  
-wait for 100 ns;
+wait for 50 ns;
  
 rst <= '0';
  
@@ -90,7 +90,19 @@ wait for 20 ns;
 din <= '0';
 wait for 20 ns;
  
+din <= '1';             --dout = 010
+wait for 20 ns;
+ 
+din <= '0';     
+wait for 20 ns;
+ 
+din <= '0';
+wait for 20 ns;
+ 
 din <= '1';
+wait for 20 ns;
+ 
+din <= '0';
 wait for 20 ns;
  
 din <= '0';
@@ -100,6 +112,12 @@ din <= '1';
 wait for 20 ns;
  
 din <= '1';
+wait for 20 ns;
+ 
+din <= '1';
+wait for 20 ns;
+ 
+din <= '0';
 end process;
  
 END;

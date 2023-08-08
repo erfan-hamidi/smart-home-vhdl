@@ -312,7 +312,7 @@ BEGIN
                         reg_fstate <= Finalstate23;
                     END IF;
 
-                    dout <= "001";
+                    dout <= "100";
                 WHEN Finalstate24 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state16;
@@ -323,7 +323,7 @@ BEGIN
                         reg_fstate <= Finalstate24;
                     END IF;
 
-                    dout <= "010";
+                    dout <= "001";
                 WHEN state23 =>
                     IF ((din = '1')) THEN
                         reg_fstate <= Finalstate27;
@@ -345,7 +345,7 @@ BEGIN
                         reg_fstate <= Finalstate27;
                     END IF;
 
-                    dout <= "100";
+                    dout <= "010";
                 WHEN OTHERS => 
                     dout <= "XXX";
                     report "Reach undefined state";
