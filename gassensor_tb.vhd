@@ -14,7 +14,7 @@ PORT(
         rst : IN STD_LOGIC := '0';
         clk : IN STD_LOGIC;
         din : IN STD_LOGIC := '0';
-        dout : OUT STD_LOGIC
+        dout : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
 );
 END COMPONENT;
 
@@ -25,7 +25,7 @@ signal din : std_logic := '0';
 signal rst : std_logic := '0';
  
 --Outputs
-signal dout : std_logic;
+signal dout : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
 
 constant clk_period : time := 20 ns;
 
