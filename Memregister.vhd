@@ -9,6 +9,7 @@ entity Memregister is
 			ld  : IN STD_LOGIC; -- load/enable.
 			clr : IN STD_LOGIC; 
 			clk : IN STD_LOGIC;
+			init : in STD_LOGIC;
 			memout	:	out	std_logic_vector(34 downto 0)
 			);
 end entity;
@@ -27,22 +28,24 @@ BEGIN
 			if ld = '1' then
 				case sel is
 					when "000" =>
-						mem(7 downto 0) <= memIn(7 downto 0);
+						mem(7 downto 0) <= memin(7 downto 0);
 					when "001" =>
-						mem(15 downto 8) <= memIn(15 downto 8);
+						mem(15 downto 8) <= memin(15 downto 8);
 					when "010" =>
-						mem(19 downto 16) <= memIn(19 downto 16);
+						mem(19 downto 16) <= memin(19 downto 16);
 					when "011" =>
-						mem(23 downto 20) <= memIn(23 downto 20);
+						mem(23 downto 20) <= memin(23 downto 20);
 					when "100" =>
-						mem(31 downto 24) <= memIn(31 downto 24);
+						mem(31 downto 24) <= memin(31 downto 24);
 					when "101" =>
-						mem(32) <= memIn(32);
+						mem(32) <= memin(32);
 					when "110" =>
-						mem(34 downto 33) <= memIn(34 downto 33);
+						mem(34 downto 33) <= memin(34 downto 33);
 					when others =>
 						mem <= (others => 'X');
 				end case; 
+			elsif init = '1' then
+					mem <= memin;
 			end if;
 			memout <= mem;
         end if;

@@ -15,6 +15,7 @@ component Memregister is
 			ld  : IN STD_LOGIC; -- load/enable.
 			clr : IN STD_LOGIC; 
 			clk : IN STD_LOGIC;
+			init : in STD_LOGIC;
 			memout	:	out	std_logic_vector(34 downto 0)
 			);
 end component;
@@ -23,6 +24,7 @@ signal	sel	:	std_logic_vector(2 downto 0);
 signal	ld  : STD_LOGIC; -- load/enable.
 signal	clr : STD_LOGIC; 
 signal	clk : STD_LOGIC;
+signal init : STD_LOGIC;
 signal	memout	:	std_logic_vector(34 downto 0);
 
 
@@ -30,7 +32,7 @@ signal	memout	:	std_logic_vector(34 downto 0);
 constant clk_period : time := 20 ns;
 
 begin
-	UUT: Memregister port map(memin, sel, ld, clr, clk, memout);
+	UUT: Memregister port map(memin, sel, ld, clr, clk, init, memout);
 
 	clk_process :process
 	begin
