@@ -23,12 +23,14 @@ ENTITY gassensor IS
         rst : IN STD_LOGIC := '0';
         clk : IN STD_LOGIC;
         din : IN STD_LOGIC := '0';
-        dout : OUT STD_LOGIC
+        dout : OU000T STD_LOGIC_VECTOR(2 DOWNTO 0)
     );
 END gassensor;
 
 ARCHITECTURE BEHAVIOR OF gassensor IS
-    TYPE type_fstate IS (state1,state2,state3,state4,state5,state6,state7,state9,state8,state12,state14,state10,state11,state17,state13,state15,state18,state19,state16,state21,state22,state20,state25,Finalstate23,Finalstate24,state23,Finalstate27);
+    TYPE type_fstate IS (state1,state2,state3,state4,state5,state6,state7,state9
+    ,state8,state12,state14,state10,state11,state17,state13,state15,state18,state19
+    ,state16,state21,state22,state20,state25,Finalstate23,Finalstate24,state23,Finalstate27);
     SIGNAL fstate : type_fstate;
     SIGNAL reg_fstate : type_fstate;
 BEGIN
@@ -43,9 +45,9 @@ BEGIN
     BEGIN
         IF (rst='1') THEN
             reg_fstate <= state1;
-            dout <= '0';
+            dout <= "000";
         ELSE
-            dout <= '0';
+            dout <= "000";
             CASE fstate IS
                 WHEN state1 =>
                     IF ((din = '1')) THEN
@@ -57,7 +59,7 @@ BEGIN
                         reg_fstate <= state1;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state2 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state3;
@@ -68,7 +70,7 @@ BEGIN
                         reg_fstate <= state2;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state3 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state5;
@@ -79,7 +81,7 @@ BEGIN
                         reg_fstate <= state3;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state4 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state7;
@@ -90,7 +92,7 @@ BEGIN
                         reg_fstate <= state4;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state5 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state1;
@@ -101,7 +103,7 @@ BEGIN
                         reg_fstate <= state5;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state6 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state3;
@@ -112,7 +114,7 @@ BEGIN
                         reg_fstate <= state6;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state7 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state5;
@@ -123,7 +125,7 @@ BEGIN
                         reg_fstate <= state7;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state9 =>
                     IF ((din = '1')) THEN
                         reg_fstate <= state2;
@@ -134,7 +136,7 @@ BEGIN
                         reg_fstate <= state9;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state8 =>
                     IF ((din = '1')) THEN
                         reg_fstate <= state2;
@@ -145,7 +147,7 @@ BEGIN
                         reg_fstate <= state8;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state12 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state5;
@@ -156,7 +158,7 @@ BEGIN
                         reg_fstate <= state12;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state14 =>
                     IF ((din = '1')) THEN
                         reg_fstate <= state17;
@@ -167,7 +169,7 @@ BEGIN
                         reg_fstate <= state14;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state10 =>
                     IF ((din = '1')) THEN
                         reg_fstate <= state6;
@@ -178,7 +180,7 @@ BEGIN
                         reg_fstate <= state10;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state11 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state14;
@@ -189,7 +191,7 @@ BEGIN
                         reg_fstate <= state11;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state17 =>
                     IF ((din = '1')) THEN
                         reg_fstate <= state2;
@@ -200,7 +202,7 @@ BEGIN
                         reg_fstate <= state17;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state13 =>
                     IF ((din = '1')) THEN
                         reg_fstate <= state10;
@@ -211,7 +213,7 @@ BEGIN
                         reg_fstate <= state13;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state15 =>
                     IF ((din = '1')) THEN
                         reg_fstate <= state6;
@@ -222,7 +224,7 @@ BEGIN
                         reg_fstate <= state15;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state18 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state5;
@@ -233,7 +235,7 @@ BEGIN
                         reg_fstate <= state18;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state19 =>
                     IF ((din = '1')) THEN
                         reg_fstate <= state2;
@@ -244,7 +246,7 @@ BEGIN
                         reg_fstate <= state19;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state16 =>
                     IF ((din = '1')) THEN
                         reg_fstate <= state19;
@@ -255,7 +257,7 @@ BEGIN
                         reg_fstate <= state16;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state21 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= Finalstate24;
@@ -266,7 +268,7 @@ BEGIN
                         reg_fstate <= state21;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state22 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state25;
@@ -277,7 +279,7 @@ BEGIN
                         reg_fstate <= state22;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state20 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= Finalstate23;
@@ -288,7 +290,7 @@ BEGIN
                         reg_fstate <= state20;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN state25 =>
                     IF ((din = '1')) THEN
                         reg_fstate <= state23;
@@ -299,7 +301,7 @@ BEGIN
                         reg_fstate <= state25;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN Finalstate23 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state1;
@@ -310,7 +312,7 @@ BEGIN
                         reg_fstate <= Finalstate23;
                     END IF;
 
-                    dout <= '1';
+                    dout <= "001";
                 WHEN Finalstate24 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state16;
@@ -321,7 +323,7 @@ BEGIN
                         reg_fstate <= Finalstate24;
                     END IF;
 
-                    dout <= '1';
+                    dout <= "010";
                 WHEN state23 =>
                     IF ((din = '1')) THEN
                         reg_fstate <= Finalstate27;
@@ -332,7 +334,7 @@ BEGIN
                         reg_fstate <= state23;
                     END IF;
 
-                    dout <= '0';
+                    dout <= "000";
                 WHEN Finalstate27 =>
                     IF (NOT((din = '1'))) THEN
                         reg_fstate <= state3;
@@ -343,9 +345,9 @@ BEGIN
                         reg_fstate <= Finalstate27;
                     END IF;
 
-                    dout <= '1';
+                    dout <= "100";
                 WHEN OTHERS => 
-                    dout <= 'X';
+                    dout <= "XXX";
                     report "Reach undefined state";
             END CASE;
         END IF;
