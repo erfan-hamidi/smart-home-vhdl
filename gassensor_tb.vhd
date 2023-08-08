@@ -59,59 +59,59 @@ wait for 50 ns;
  
 rst <= '0';
  
-din <= '1';
+din <= '1';             --din = 1
  
 wait for 20 ns;
  
-din <= '0';
+din <= '0';             --din = 10
  
 wait for 20 ns;
  
-din <= '1';
+din <= '1';             --din = 101
  
 wait for 20 ns;
  
-din <= '1';
+din <= '1';             --din = 1011
  
 wait for 20 ns;
  
-din <= '1';
+din <= '1';             --din = 10111
  
 wait for 20 ns;
  
-din <= '0';
+din <= '0';             --din = 101110
  
 wait for 20 ns;
  
-din <= '1';
+din <= '1';             --din = 1011101
  
 wait for 20 ns;
  
-din <= '0';
+din <= '0';             --din = 10111010
 wait for 20 ns;
  
-din <= '1';             --dout = 010
+din <= '1';             --din = 101110101
 wait for 20 ns;
  
-din <= '0';     
+din <= '0';             --din = 1011101010     --dout = 001
 wait for 20 ns;
  
-din <= '0';
+din <= '0';             --din = 10111010100
 wait for 20 ns;
  
-din <= '1';
+din <= '1';             --din = 101110101001
 wait for 20 ns;
  
-din <= '0';
+din <= '0';             --din = 1011101010010
 wait for 20 ns;
  
-din <= '0';
+din <= '0';             --din = 10111010100100
 wait for 20 ns;
  
-din <= '1';
+din <= '1';             --din = 101110101001001
 wait for 20 ns;
  
-din <= '1';
+din <= '1';             --din = 1011101010010011      dout = 010
 wait for 20 ns;
  
 din <= '1';
