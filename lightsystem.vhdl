@@ -23,7 +23,7 @@ BEGIN
 
     IF(temp > 0) THEN
         FOR i IN 0 TO 15 loop
-            if i < temp - 1 then
+            if i < temp then
 						light_state(i) := '1';
 				end if;
         END LOOP;

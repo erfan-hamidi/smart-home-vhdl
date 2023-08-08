@@ -25,7 +25,7 @@ signal din : std_logic := '0';
 signal rst : std_logic := '0';
  
 --Outputs
-signal dout : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+signal dout :  STD_LOGIC_VECTOR(2 DOWNTO 0);
 
 constant clk_period : time := 20 ns;
 
