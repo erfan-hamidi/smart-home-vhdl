@@ -23,7 +23,7 @@ ENTITY gassensor IS
         rst : IN STD_LOGIC := '0';
         clk : IN STD_LOGIC;
         din : IN STD_LOGIC := '0';
-        dout : OU000T STD_LOGIC_VECTOR(2 DOWNTO 0)
+        dout : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
     );
 END gassensor;
 

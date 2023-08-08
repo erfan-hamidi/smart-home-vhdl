@@ -1,16 +1,18 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 ENTITY lightsystem IS
     PORT (
-        tcode, user_light, length : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+        tcode, user_light, lengthin : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         wshade, lights_num : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-        light_state : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+        light_state : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
 
     );
 END lightsystem;
 
-ARCHITECTURE BEHAVIOR OF gassensor IS
+ARCHITECTURE BEHAVIOR OF lightsystem IS
+
 
 FUNCTION light_num_to_state(lights_number : IN std_logic_vector(3 DOWNTO 0)) RETURN std_logic_vector IS
     VARIABLE temp : integer;
@@ -20,19 +22,23 @@ BEGIN
     temp := to_integer(unsigned(lights_number));
 
     IF(temp > 0) THEN
-        FOR i IN 0 TO temp-1 loop
-            light_state(i) := '1';
+        FOR i IN 0 TO 15 loop
+            if i < temp - 1 then
+						light_state(i) := '1';
+				end if;
         END LOOP;
     END IF;
     RETURN light_state;
 
 END FUNCTION;
 
-variable temp,x,result : integer;
+shared variable n,x,result : integer;
+
 
 BEGIN
 
-    process(input_signal)
+    process(tcode)
+	
     BEGIN
         case tcode is
             when "0001" =>
@@ -49,11 +55,11 @@ BEGIN
 
             when "0100" =>
                 wshade <= "0000";
-                temp := to_integer(unsigned(length))
-                x := temp * temp;
-                result := x / (4 * remp);
-                lights_num <= std_logic_vector(to_unsigned(res, length'length));
-                light_state <= light_num_to_state(std_logic_vector(to_unsigned(res, length'length));
+                n := to_integer(unsigned(lengthin));
+                x := n * n;
+                result := x / (4 * n);
+                lights_num <= std_logic_vector(to_unsigned(result, lengthin'length));
+                light_state <= light_num_to_state(std_logic_vector(to_unsigned(result, lengthin'length)));
 
 
             when "1000" => 
@@ -62,8 +68,14 @@ BEGIN
                 light_state <= light_num_to_state(user_light);
 
 
-            when "0000" or others =>
+            when "0000" =>
                 wshade <= "0000";
+                lights_num <= "0000";
+                light_state <= "0000000000000000";
+					 
+					 
+				when others =>
+					 wshade <= "0000";
                 lights_num <= "0000";
                 light_state <= "0000000000000000";
         end case;
