@@ -39,12 +39,17 @@ architecture bihavior of Confandpswd is
 	signal	clk : STD_LOGIC;
 	signal init : STD_LOGIC;
 	signal	memout	:	std_logic_vector(34 downto 0);
+	constant clk_period : time := 20 ns;
 
 	begin
 	UUT: Memregister port map(memin, sel, ld, clr, clk, init ,memout);
-	
+
+
+
 		PROCESS (clock,next_state)
     	BEGIN
+			clk <= clock;
+			usermemout <= memout;
 			IF (clock='1' AND clock'event) THEN
 				state <= next_state;
 			END IF;
@@ -52,7 +57,15 @@ architecture bihavior of Confandpswd is
 
 		PROCESS (state,request)
     	BEGIN
-			usermemout <= memout;
+
+		ld <= '0';
+		clr <= '0';
+		init <= '1';
+		sel <= "000";
+		memin <= "01000000000000000000000000000000000";
+		init <= transport '0' after 30ns;
+			
+			next_state <= A;
 			case state is
 				when A =>
 					if request = '1' then
@@ -65,8 +78,10 @@ architecture bihavior of Confandpswd is
 						next_state <= C;
 					elsif request = '0' then
 						next_state <= A;
-					else
-					next_state <= E;
+					elsif password /= memout(34 downto 33) then
+						next_state <= E;
+					else 
+						next_state <= B;
 					end if;
 				when C =>
 						if confirm = '1' then
